@@ -27,14 +27,15 @@ function first_dice(){
     document.querySelectorAll("img")[0].setAttribute("src",dicee1_image);
     count=count+dicee1;
     if(dicee1!==6){
-        document.querySelectorAll("button")[0].classList.add("btn");
+        // document.querySelectorAll("button")[0].classList.add("btn");
         dicee1=count;
         count=0;
+        document.querySelectorAll("button")[0].removeEventListener("click", first_dice)
         document.querySelectorAll("button")[1].addEventListener("click", second_dice);
     }
-    if(dicee2!==0 && count===0){  //if(dicee2>=1 && dicee2s<=6);
-        Game();
-    }
+    // if(dicee2!==0 && count===0){  //if(dicee2>=1 && dicee2s<=6);
+    //     Game();
+    // }
 }
 function second_dice(){
     dicee2 = Math.floor((Math.random()*6)+1);
@@ -42,13 +43,16 @@ function second_dice(){
     document.querySelectorAll("img")[1].setAttribute("src",dicee2_image);
     count=count+dicee2;
     if(dicee2!==6){
-        document.querySelectorAll("button")[1].classList.add("btn");
+        // document.querySelectorAll("button")[1].classList.add("btn");
         dicee2=count;
         count=0;
-    }
-    if(dicee1!==0 && count===0){    //if(dicee1>=1 && dicee1<=6);
+        document.querySelectorAll("button")[1].removeEventListener("click",second_dice)
         Game();
+        document.querySelectorAll("button")[2].addEventListener("click", load);
     }
+    // if(dicee1!==0 && count===0){    //if(dicee1>=1 && dicee1<=6);
+    //     Game();
+    // }
 }
 function Game(){
     if(dicee1 > dicee2){
